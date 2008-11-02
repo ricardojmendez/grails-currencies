@@ -1,0 +1,14 @@
+<plugin name='currencies' version='0.4'>
+  <author>Ricardo J. Mendez</author>
+  <authorEmail>ricardo@arquetipos.co.cr</authorEmail>
+  <title>Currency and exchange rate plugin for grails</title>
+  <description>Allows easy storage of currencies and exchange rates across them.  Provides
+a Money helper class that is used for converting between currencies at the
+exchange rate on a certain date (the current date is used by default).
+</description>
+  <resources>
+    <resource>CurrencyBootStrap</resource>
+    <resource>ExchangeRate</resource>
+    <resource>Money</resource>
+  </resources>
+</plugin>
