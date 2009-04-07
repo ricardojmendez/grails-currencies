@@ -1,4 +1,4 @@
-<plugin name='currencies' version='0.4'>
+<plugin name='currencies' version='1.0' grailsVersion='1.1 &gt; *'>
   <author>Ricardo J. Mendez</author>
   <authorEmail>ricardo@arquetipos.co.cr</authorEmail>
   <title>Currency and exchange rate plugin for grails</title>
@@ -8,7 +8,9 @@ exchange rate on a certain date (the current date is used by default).
 </description>
   <resources>
     <resource>CurrencyBootStrap</resource>
+    <resource>UrlMappings</resource>
     <resource>ExchangeRate</resource>
     <resource>Money</resource>
   </resources>
+  <dependencies />
 </plugin>
