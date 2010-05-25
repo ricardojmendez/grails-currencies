@@ -1,3 +1,5 @@
+import cr.co.arquetipos.currencies.*
+
 class MoneyTests extends GroovyTestCase {
 
     void setUp() {

@@ -1,3 +1,4 @@
+package cr.co.arquetipos.currencies
 public class Money implements Serializable {
     float amount = 0
     Currency currency = Currency.getInstance('EUR')

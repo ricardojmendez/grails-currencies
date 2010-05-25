@@ -1,3 +1,5 @@
+import cr.co.arquetipos.currencies.*
+
 class ExchangeRateTests extends GroovyTestCase {
 
     void setUp() {

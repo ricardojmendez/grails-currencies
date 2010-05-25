@@ -1,3 +1,4 @@
+package cr.co.arquetipos.currencies
 class ExchangeRate implements Serializable { 
     Currency baseCurrency
     Currency toCurrency
