@@ -135,6 +135,23 @@ class MoneyTests extends GroovyTestCase {
         
     }
 
+	void testDiv() {
+        def dollars = new Money(amount:10, currency:'USD')
+        def div =  dollars / 2
+
+        assertEquals div.amount, 5f
+        assertEquals div.currency.currencyCode, 'USD'
+
+		dollars /= 4
+        assert dollars
+        assertEquals dollars.amount, 2.5f
+
+        div = new Money(amount:7.5, currency:'EUR') / 3
+        assertEquals div.amount, 2.5f
+        
+    }
+
+
     void testFailures() {
         def dollar = Currency.getInstance('USD')
         def euro = Currency.getInstance('EUR')

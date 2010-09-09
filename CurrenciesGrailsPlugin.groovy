@@ -1,6 +1,6 @@
 
 class CurrenciesGrailsPlugin {
-	def version = "1.3.1"
+	def version = "1.3.2"
 	def dependsOn = [:]
 
     // TODO Add accent once Grail's UTF-8 bug is fixed
@@ -11,6 +11,8 @@ class CurrenciesGrailsPlugin {
 Allows easy storage of currencies and exchange rates across them.  Provides
 a Money helper class that is used for converting between currencies at the
 exchange rate on a certain date (the current date is used by default).
+
+It's recommended you use the money amounts embedded.
 '''
 	
 	

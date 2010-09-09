@@ -74,6 +74,10 @@ public class Money implements Serializable {
         return new Money(amount:this.amount * n, currency:currency)
     }
 
+	Money div(Number n) {
+		return new Money(amount:this.amount / n, currency:currency)
+	}
+
     Money convertTo(Currency newCurrency, Date toDate = null) {
         if (newCurrency == currency) return this;
         if (!toDate) toDate = new Date()
