@@ -23,7 +23,7 @@ class ExchangeRateTests extends GroovyTestCase {
                                             
         def rate = ExchangeRate.findByBaseCurrencyAndToCurrency(euro, dollar)
         assert rate
-        assertEquals rate.rate, 1.46122f
+        assertEquals rate.rate, 1.46122
         assertEquals rate.date, new Date('2007/12/02')
     }
 }

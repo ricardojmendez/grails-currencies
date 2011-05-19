@@ -1,6 +1,6 @@
 package cr.co.arquetipos.currencies
 public class Money implements Serializable {
-    float amount = 0
+    BigDecimal amount = 0
     Currency currency = Currency.getInstance('EUR')
 
 	private static decimalFormat = new java.text.DecimalFormat( "###,##0.00" )
@@ -18,7 +18,7 @@ public class Money implements Serializable {
     static Money getInstance(String value) {
         def list = value.split(' ')
         assert list.size() == 2
-        float newAmount = Float.parseFloat(list[0])
+        BigDecimal newAmount = new BigDecimal(list[0])
         def newCurrency = Currency.getInstance(list[1])
         Money money = new Money(amount:newAmount, currency:newCurrency)
         return money
@@ -30,7 +30,7 @@ public class Money implements Serializable {
     }
 
     String toString() {
-		String formatted = decimalFormat.format((Double)amount)
+		String formatted = decimalFormat.format((BigDecimal)amount)
 		return "${formatted} ${currency?.currencyCode}"
     }
 

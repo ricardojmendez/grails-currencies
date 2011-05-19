@@ -87,6 +87,20 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>grails-app/conf/UrlMappings.groovy</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>grails-app/domain/cr/co/arquetipos/currencies/ExchangeRate.groovy</key>
 		<dict>
 			<key>caret</key>
@@ -106,14 +120,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>35</integer>
+				<integer>2</integer>
 				<key>line</key>
-				<integer>0</integer>
+				<integer>78</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>57</integer>
 		</dict>
 		<key>test/integration/ExchangeRateTests.groovy</key>
 		<dict>
@@ -134,14 +148,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>36</integer>
+				<integer>39</integer>
 				<key>line</key>
-				<integer>0</integer>
+				<integer>146</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>4</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
@@ -150,11 +164,12 @@
 		<string>grails-app/domain/cr/co/arquetipos/currencies/Money.groovy</string>
 		<string>test/integration/ExchangeRateTests.groovy</string>
 		<string>grails-app/conf/CurrencyBootStrap.groovy</string>
+		<string>grails-app/conf/UrlMappings.groovy</string>
 		<string>test/integration/MoneyTests.groovy</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{412, 21}, {827, 857}}</string>
+	<string>{{1985, -160}, {1141, 1004}}</string>
 </dict>
 </plist>

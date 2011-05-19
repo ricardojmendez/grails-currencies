@@ -2,7 +2,7 @@ package cr.co.arquetipos.currencies
 class ExchangeRate implements Serializable { 
     Currency baseCurrency
     Currency toCurrency
-    float rate
+    BigDecimal rate
     Date date = new Date()
     
     static constraints = {

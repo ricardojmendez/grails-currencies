@@ -44,18 +44,18 @@ class MoneyTests extends GroovyTestCase {
         Money euros = new Money(amount:10, currency:euro)
 
         Money toDollars = euros.convertTo(dollar)
-        assertEquals toDollars.amount, 14.6122f
+        assertEquals toDollars.amount, 14.6122
         assertEquals toDollars, new Money(amount:14.6122, currency:dollar)
 
         toDollars = euros.convertTo(dollar, new Date('2007/01/01'))
-        assertEquals toDollars.amount, 13.315901f
+        assertEquals toDollars.amount, 13.31590
 
         def gbp = Currency.getInstance('GBP')
         assert gbp
 
         Money dollars = new Money(amount:1, currency:dollar)
         Money toGBP = dollars.convertTo(gbp)
-        assertEquals toGBP.amount, 0.49414682f
+        assertEquals toGBP.amount, 0.4941468308
     }
 
     void testSum() {
@@ -63,12 +63,12 @@ class MoneyTests extends GroovyTestCase {
         def pounds = new Money(amount:1, currency:'GBP')
         def sum = dollars + pounds
         assert sum
-        assertEquals sum.amount, 3.02369f
+        assertEquals sum.amount, 3.02369
         assertEquals sum.currency.currencyCode, 'USD'
         
         sum = pounds + dollars
         assert sum
-        assertEquals sum.amount, 1.49414682f
+        assertEquals sum.amount, 1.4941468308
         assertEquals sum.currency.currencyCode, 'GBP'
 
         def euros = new Money(currency:'EUR')
@@ -76,7 +76,7 @@ class MoneyTests extends GroovyTestCase {
         assert euros
         //println euros
         assertEquals euros.currency.currencyCode, 'EUR'
-        assertEquals euros.amount, 8.228528f
+        assertEquals euros.amount, 8.228528216382943
 
 		pounds = new Money(amount:1, currency:'GBP')
 		pounds += 2
@@ -89,12 +89,12 @@ class MoneyTests extends GroovyTestCase {
 		def pounds = new Money(amount:1, currency:'GBP')
 		def sum = dollars + pounds
 		assert sum
-		assertEquals sum.amount, 3.02369f
+		assertEquals sum.amount, 3.02369
 		assertEquals sum.currency.currencyCode, 'USD'
 
 		sum = pounds + dollars
 		assert sum
-		assertEquals sum.amount, 1.49414682f
+		assertEquals sum.amount, 1.4941468308
 		assertEquals sum.currency.currencyCode, 'GBP'
 
 		def euros = new Money(currency:'EUR')
@@ -102,7 +102,7 @@ class MoneyTests extends GroovyTestCase {
 		assert euros
 		//println euros
 		assertEquals euros.currency.currencyCode, 'EUR'
-		assertEquals euros.amount, 8.228528f
+		assertEquals euros.amount, 8.228528216382943
 
 		pounds = new Money(amount:1, currency:'GBP')
 		pounds += 2
