@@ -1,6 +1,6 @@
 
 class CurrenciesGrailsPlugin {
-	def version = "1.4"
+	def version = "1.5"
 	def dependsOn = [:]
 
     // TODO Add accent once Grail's UTF-8 bug is fixed
