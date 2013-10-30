@@ -12,6 +12,8 @@ grails.project.dependency.resolution = {
     }
 
     dependencies {
+//        compile 'org.joda:joda-money:0.9'
+//        compile('javax.money:jsr354-api:0.7')
     }
 
     plugins {
