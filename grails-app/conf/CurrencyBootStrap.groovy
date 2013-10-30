@@ -1,9 +1,3 @@
-/**
- *
- * Author: ricardo
- * Date: Dec 7, 2007
- * Time: 3:58:21 PM
- */
 import cr.co.arquetipos.currencies.*
 
 class CurrencyBootStrap {
