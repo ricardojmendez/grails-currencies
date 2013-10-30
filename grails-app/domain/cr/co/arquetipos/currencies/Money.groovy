@@ -1,6 +1,6 @@
 package cr.co.arquetipos.currencies
 
-public class Money implements Serializable {
+class Money implements Serializable {
     private static decimalFormat = new java.text.DecimalFormat("###,##0.00")
     BigDecimal amount = 0.0G
     Currency currency = Currency.getInstance('EUR')
