@@ -1,6 +1,7 @@
 dataSource {
     pooled = true
     driverClassName = 'org.h2.Driver'
+    dialect = org.hibernate.dialect.H2Dialect
     username = 'sa'
     password = ''
     dbCreate = 'update'
