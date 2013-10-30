@@ -2,10 +2,10 @@ package cr.co.arquetipos.currencies
 
 public class Money implements Serializable {
     private static decimalFormat = new java.text.DecimalFormat("###,##0.00")
-    BigDecimal amount = 0
+    BigDecimal amount = 0.0G
     Currency currency = Currency.getInstance('EUR')
     static constraints = {
-        amount(scale: 2)
+        amount(scale: 10) // Oracle NUMBER carries precision up to 38 digits in the range of 1.0E-130 to 1.0E126
     }
 
     /**

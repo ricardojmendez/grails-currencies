@@ -7,6 +7,7 @@ class ExchangeRate implements Serializable {
 
     static constraints = {
         date(unique: ['baseCurrency', 'toCurrency'])
+        rate(scale: 10)
     }
 
     String toString() {
