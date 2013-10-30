@@ -14,6 +14,6 @@ It's recommended you use the money amounts embedded.
 '''
     String documentation = 'https://github.com/stokito/grails-currencies'
     String license = 'APACHE'
-    Map issueManagement = [system: 'JIRA', url: 'https://github.com/stokito/grails-currencies/issues']
+    Map issueManagement = [system: 'GitHub', url: 'https://github.com/stokito/grails-currencies/issues']
     Map scm = [url: 'https://github.com/stokito/grails-currencies']
 }
