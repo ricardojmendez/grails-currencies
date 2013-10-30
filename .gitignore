@@ -13,9 +13,6 @@ atlassian-ide-plugin.xml
 # Target
 target/
 
-# Unused web-app files
-web-app
-
 docs/
 plugin.xml
 .settings
