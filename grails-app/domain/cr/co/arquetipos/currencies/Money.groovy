@@ -95,8 +95,8 @@ public class Money implements Serializable {
                     eq('toCurrency', this.currency)
                 }
             }
-            le('date', toDate)
-            order('date', 'desc')
+            le('dateCreated', toDate)
+            order('dateCreated', 'desc')
             maxResults(1)
         }
         if (!rate) {
