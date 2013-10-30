@@ -9,6 +9,10 @@ class ExchangeRate implements Serializable {
         dateCreated(unique:['baseCurrency', 'toCurrency'])
     }
 
+    static mapping = {
+        autoTimestamp(false)
+    }
+
     String toString() {
         "$dateCreated $baseCurrency to $toCurrency @ $rate"
     }
