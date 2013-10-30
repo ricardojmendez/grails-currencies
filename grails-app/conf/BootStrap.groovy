@@ -1,6 +1,6 @@
 import cr.co.arquetipos.currencies.*
 
-class CurrencyBootStrap {
+class BootStrap {
     def init = {servletContext ->
         if (!ExchangeRate.list()) {
             def dollar = Currency.getInstance('USD')
