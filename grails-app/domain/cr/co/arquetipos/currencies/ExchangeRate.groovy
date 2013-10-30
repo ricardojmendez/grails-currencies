@@ -3,17 +3,17 @@ class ExchangeRate implements Serializable {
     Currency baseCurrency
     Currency toCurrency
     BigDecimal rate
-    Date dateCreated = new Date()
+    Date validFrom = new Date()
 
     static constraints = {
-        dateCreated(unique: ['baseCurrency', 'toCurrency'])
+        validFrom(unique: ['baseCurrency', 'toCurrency'])
     }
 
     static mapping = {
-        autoTimestamp(false)
+//        autoTimestamp(false)
     }
 
     String toString() {
-        "$dateCreated $baseCurrency to $toCurrency @ $rate"
+        "$validFrom $baseCurrency to $toCurrency @ $rate"
     }
 }

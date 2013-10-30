@@ -96,7 +96,6 @@ public class Money implements Serializable {
             toDate = new Date()
         }
         def c = ExchangeRate.createCriteria()
-        def multiplier = 0
         // TODO Implement exchange rate caching as a service
         def rate = c.get {
             or {
@@ -109,10 +108,11 @@ public class Money implements Serializable {
                     eq('toCurrency', this.currency)
                 }
             }
-            le('dateCreated', toDate)
-            order('dateCreated', 'desc')
+            le('validFrom', toDate)
+            order('validFrom', 'desc')
             maxResults(1)
         }
+        def multiplier = 0
         if (!rate) {
             throw new IllegalArgumentException("No exchange rate found")
         } else {

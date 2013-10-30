@@ -8,11 +8,11 @@ class MoneyTests extends GroovyTestCase {
     Currency gbp = Currency.getInstance('GBP')
 
     void setUp() {
-        new ExchangeRate(baseCurrency: euro, toCurrency: dollar, rate: 1.46122, dateCreated: new Date(2007, 12, 2)).save()
-        new ExchangeRate(baseCurrency: yen, toCurrency: dollar, rate: 0.008981, dateCreated: new Date(2007, 12, 2)).save()
-        new ExchangeRate(baseCurrency: dollar, toCurrency: yen, rate: 111.336, dateCreated: new Date(2007, 12, 2)).save()
-        new ExchangeRate(baseCurrency: gbp, toCurrency: dollar, rate: 2.02369, dateCreated: new Date(2007, 12, 2)).save()
-        new ExchangeRate(baseCurrency: euro, toCurrency: dollar, rate: 1.33159, dateCreated: new Date(2006, 12, 02)).save()
+        new ExchangeRate(baseCurrency: euro, toCurrency: dollar, rate: 1.46122, validFrom: new Date('2007/12/2')).save()
+        new ExchangeRate(baseCurrency: yen, toCurrency: dollar, rate: 0.008981, validFrom: new Date('2007/12/2')).save()
+        new ExchangeRate(baseCurrency: dollar, toCurrency: yen, rate: 111.336, validFrom: new Date('2007/12/2')).save()
+        new ExchangeRate(baseCurrency: gbp, toCurrency: dollar, rate: 2.02369, validFrom: new Date('2007/12/2')).save()
+        new ExchangeRate(baseCurrency: euro, toCurrency: dollar, rate: 1.33159, validFrom: new Date('2006/12/2')).save()
     }
 
     void testInits() {
@@ -41,7 +41,7 @@ class MoneyTests extends GroovyTestCase {
         assertEquals toDollars.amount, 14.6122
         assertEquals toDollars, new Money(amount: 14.6122, currency: dollar)
 
-        toDollars = euros.convertTo(dollar, new Date(2007, 01, 01))
+        toDollars = euros.convertTo(dollar, new Date('2007/01/01'))
         assertEquals toDollars.amount, 13.31590
 
         Money dollars = new Money(amount: 1, currency: dollar)
@@ -54,12 +54,12 @@ class MoneyTests extends GroovyTestCase {
         def pounds = new Money(amount: 1, currency: gbp)
         def sum = dollars + pounds
         assert sum
-        assertEquals sum.amount, 3.02369
+        assertEquals sum.amount, 3.02369G
         assertEquals sum.currency.currencyCode, 'USD'
 
         sum = pounds + dollars
         assert sum
-        assertEquals sum.amount, 1.4941468308
+        assertEquals sum.amount, 1.4941468308G
         assertEquals sum.currency.currencyCode, 'GBP'
 
         def euros = new Money(currency: euro)
@@ -67,7 +67,7 @@ class MoneyTests extends GroovyTestCase {
         assert euros
         //println euros
         assertEquals euros.currency.currencyCode, 'EUR'
-        assertEquals euros.amount, 8.228528216382943
+        assertEquals euros.amount, 8.228528216382943G
 
         pounds = new Money(amount: 1, currency: gbp)
         pounds += 2
@@ -80,12 +80,12 @@ class MoneyTests extends GroovyTestCase {
         def pounds = new Money(amount: 1, currency: gbp)
         def sum = dollars + pounds
         assert sum
-        assertEquals sum.amount, 3.02369
+        assertEquals sum.amount, 3.02369G
         assertEquals sum.currency.currencyCode, 'USD'
 
         sum = pounds + dollars
         assert sum
-        assertEquals sum.amount, 1.4941468308
+        assertEquals sum.amount, 1.4941468308G
         assertEquals sum.currency.currencyCode, 'GBP'
 
         def euros = new Money(currency: euro)
@@ -93,7 +93,7 @@ class MoneyTests extends GroovyTestCase {
         assert euros
         //println euros
         assertEquals euros.currency.currencyCode, 'EUR'
-        assertEquals euros.amount, 8.228528216382943
+        assertEquals euros.amount, 8.228528216382943G
 
         pounds = new Money(amount: 1, currency: gbp)
         pounds += 2
@@ -143,7 +143,7 @@ class MoneyTests extends GroovyTestCase {
         Money euros = new Money(amount: 10, currency: euro)
 
         shouldFail(Exception) {
-            Money toDollars = euros.convertTo(dollar, new Date(2005, 01, 01))
+            Money toDollars = euros.convertTo(dollar, new Date('2005/01/01'))
         }
 
         Money toYens
@@ -152,7 +152,7 @@ class MoneyTests extends GroovyTestCase {
             toYens = euros.convertTo(yen)
         }
         shouldFail(IllegalArgumentException) {
-            toYens = euros.convertTo(yen, new Date(2007, 12, 05))
+            toYens = euros.convertTo(yen, new Date('2007/12/05'))
         }
     }
 
