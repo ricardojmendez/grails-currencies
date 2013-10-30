@@ -1,7 +1,6 @@
 class CurrenciesGrailsPlugin {
-    String version = '2.0-SNAPSHOT'
-    String dependsOn = [:]
-    String grailsVersion = '2.3.1 > *'
+    String version = '2.0'
+    String grailsVersion = '2.3 > *'
     String author = 'Ricardo J. Méndez'
     String authorEmail = 'ricardo@arquetipos.co.cr'
     String title = 'Currency and exchange rate plugin for Grails'
