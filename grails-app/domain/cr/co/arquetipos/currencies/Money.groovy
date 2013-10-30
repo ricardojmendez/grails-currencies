@@ -54,7 +54,7 @@ class Money implements Serializable {
     Money plus(Money other) {
         assert other
         if (other.currency != this.currency) {
-            other = other.convertTo(this.currency)
+            throw new IllegalStateException('plus between different monies')
         }
         return new Money(amount: this.amount + other.amount, currency: currency)
     }
@@ -88,40 +88,7 @@ class Money implements Serializable {
         return new Money(amount: this.amount / n, currency: currency)
     }
 
-    Money convertTo(Currency newCurrency, Date toDate = null) {
-        if (newCurrency == currency) {
-            return this
-        };
-        if (!toDate) {
-            toDate = new Date()
-        }
-        def c = ExchangeRate.createCriteria()
-        // TODO Implement exchange rate caching as a service
-        def rate = c.get {
-            or {
-                and {
-                    eq('baseCurrency', this.currency)
-                    eq('toCurrency', newCurrency)
-                }
-                and {
-                    eq('baseCurrency', newCurrency)
-                    eq('toCurrency', this.currency)
-                }
-            }
-            le('date', toDate)
-            order('date', 'desc')
-            maxResults(1)
-        }
-        def multiplier = 0
-        if (!rate) {
-            throw new IllegalArgumentException("No exchange rate found")
-        } else {
-            if (rate.baseCurrency == this.currency) {
-                multiplier = rate.rate
-            } else {
-                multiplier = 1 / rate.rate
-            }
-        }
-        return new Money(amount: amount * multiplier, currency: newCurrency)
+    Money convertTo(Currency newCurrency, BigDecimal rate) {
+        return new Money(amount: amount * rate, currency: newCurrency)
     }
 }
