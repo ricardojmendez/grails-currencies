@@ -1,4 +1,5 @@
-import cr.co.arquetipos.currencies.*
+import cr.co.arquetipos.currencies.ExchangeRate
+import cr.co.arquetipos.currencies.Money
 
 class MoneyTests extends GroovyTestCase {
     Currency dollar = Currency.getInstance('USD')
@@ -7,15 +8,15 @@ class MoneyTests extends GroovyTestCase {
     Currency gbp = Currency.getInstance('GBP')
 
     void setUp() {
-        new ExchangeRate(baseCurrency:euro, toCurrency:dollar, rate:1.46122, dateCreated:new Date(2007, 12, 2)).save()
-        new ExchangeRate(baseCurrency:yen, toCurrency:dollar, rate:0.008981, dateCreated:new Date(2007, 12, 2)).save()
-        new ExchangeRate(baseCurrency:dollar, toCurrency:yen, rate:111.336, dateCreated:new Date(2007, 12, 2)).save()
-        new ExchangeRate(baseCurrency:gbp, toCurrency:dollar, rate:2.02369, dateCreated:new Date(2007, 12, 2)).save()
-        new ExchangeRate(baseCurrency:euro, toCurrency:dollar, rate:1.33159, dateCreated:new Date(2006, 12, 02)).save()
+        new ExchangeRate(baseCurrency: euro, toCurrency: dollar, rate: 1.46122, dateCreated: new Date(2007, 12, 2)).save()
+        new ExchangeRate(baseCurrency: yen, toCurrency: dollar, rate: 0.008981, dateCreated: new Date(2007, 12, 2)).save()
+        new ExchangeRate(baseCurrency: dollar, toCurrency: yen, rate: 111.336, dateCreated: new Date(2007, 12, 2)).save()
+        new ExchangeRate(baseCurrency: gbp, toCurrency: dollar, rate: 2.02369, dateCreated: new Date(2007, 12, 2)).save()
+        new ExchangeRate(baseCurrency: euro, toCurrency: dollar, rate: 1.33159, dateCreated: new Date(2006, 12, 02)).save()
     }
 
     void testInits() {
-        Money dollars = new Money(amount:9.50, currency:dollar)
+        Money dollars = new Money(amount: 9.50, currency: dollar)
         assert dollars
         assertEquals dollars.currency.currencyCode, 'USD'
         assertEquals dollars.currency.symbol, '\$'
@@ -34,84 +35,83 @@ class MoneyTests extends GroovyTestCase {
     }
 
     void testRates() {
-        Money euros = new Money(amount:10, currency:euro)
+        Money euros = new Money(amount: 10, currency: euro)
 
         Money toDollars = euros.convertTo(dollar)
         assertEquals toDollars.amount, 14.6122
-        assertEquals toDollars, new Money(amount:14.6122, currency:dollar)
+        assertEquals toDollars, new Money(amount: 14.6122, currency: dollar)
 
         toDollars = euros.convertTo(dollar, new Date(2007, 01, 01))
         assertEquals toDollars.amount, 13.31590
 
-        Money dollars = new Money(amount:1, currency:dollar)
+        Money dollars = new Money(amount: 1, currency: dollar)
         Money toGBP = dollars.convertTo(gbp)
         assertEquals toGBP.amount, 0.4941468308
     }
 
     void testSum() {
-        def dollars = new Money(amount:1, currency:dollar)
-        def pounds = new Money(amount:1, currency:gbp)
+        def dollars = new Money(amount: 1, currency: dollar)
+        def pounds = new Money(amount: 1, currency: gbp)
         def sum = dollars + pounds
         assert sum
         assertEquals sum.amount, 3.02369
         assertEquals sum.currency.currencyCode, 'USD'
-        
+
         sum = pounds + dollars
         assert sum
         assertEquals sum.amount, 1.4941468308
         assertEquals sum.currency.currencyCode, 'GBP'
 
-        def euros = new Money(currency:euro)
-        euros += new Money(amount:10, currency:dollar) + new Money(amount:1, currency:gbp)
+        def euros = new Money(currency: euro)
+        euros += new Money(amount: 10, currency: dollar) + new Money(amount: 1, currency: gbp)
         assert euros
         //println euros
         assertEquals euros.currency.currencyCode, 'EUR'
         assertEquals euros.amount, 8.228528216382943
 
-		pounds = new Money(amount:1, currency:gbp)
-		pounds += 2
-		assertEquals pounds.amount, 3
-		assertEquals pounds.currency.currencyCode, 'GBP'
-	}
+        pounds = new Money(amount: 1, currency: gbp)
+        pounds += 2
+        assertEquals pounds.amount, 3
+        assertEquals pounds.currency.currencyCode, 'GBP'
+    }
 
-	void testMinus() {
-		def dollars = new Money(amount:1, currency:dollar)
-		def pounds = new Money(amount:1, currency:gbp)
-		def sum = dollars + pounds
-		assert sum
-		assertEquals sum.amount, 3.02369
-		assertEquals sum.currency.currencyCode, 'USD'
+    void testMinus() {
+        def dollars = new Money(amount: 1, currency: dollar)
+        def pounds = new Money(amount: 1, currency: gbp)
+        def sum = dollars + pounds
+        assert sum
+        assertEquals sum.amount, 3.02369
+        assertEquals sum.currency.currencyCode, 'USD'
 
-		sum = pounds + dollars
-		assert sum
-		assertEquals sum.amount, 1.4941468308
-		assertEquals sum.currency.currencyCode, 'GBP'
+        sum = pounds + dollars
+        assert sum
+        assertEquals sum.amount, 1.4941468308
+        assertEquals sum.currency.currencyCode, 'GBP'
 
-		def euros = new Money(currency:euro)
-		euros += new Money(amount:10, currency:dollar) + new Money(amount:1, currency:gbp)
-		assert euros
-		//println euros
-		assertEquals euros.currency.currencyCode, 'EUR'
-		assertEquals euros.amount, 8.228528216382943
+        def euros = new Money(currency: euro)
+        euros += new Money(amount: 10, currency: dollar) + new Money(amount: 1, currency: gbp)
+        assert euros
+        //println euros
+        assertEquals euros.currency.currencyCode, 'EUR'
+        assertEquals euros.amount, 8.228528216382943
 
-		pounds = new Money(amount:1, currency:gbp)
-		pounds += 2
-		assertEquals pounds.amount, 3
-		assertEquals pounds.currency.currencyCode, 'GBP'
+        pounds = new Money(amount: 1, currency: gbp)
+        pounds += 2
+        assertEquals pounds.amount, 3
+        assertEquals pounds.currency.currencyCode, 'GBP'
 
-		pounds -= 1.5
-		assertEquals pounds.amount, 1.5
+        pounds -= 1.5
+        assertEquals pounds.amount, 1.5
 
-		def tenPounds = new Money(amount:10, currency:gbp)
-		tenPounds -= pounds
-		assertEquals tenPounds.amount, 8.5
-		assertEquals tenPounds.currency.currencyCode, 'GBP'
+        def tenPounds = new Money(amount: 10, currency: gbp)
+        tenPounds -= pounds
+        assertEquals tenPounds.amount, 8.5
+        assertEquals tenPounds.currency.currencyCode, 'GBP'
+    }
 
-	}
-
-	void testMultiply() {
-        def dollars = new Money(amount:2, currency:dollar)
-        def mult =  dollars * 2.5
+    void testMultiply() {
+        def dollars = new Money(amount: 2, currency: dollar)
+        def mult = dollars * 2.5
 
         assertEquals mult.amount, 5f
         assertEquals mult.currency.currencyCode, 'USD'
@@ -120,30 +120,27 @@ class MoneyTests extends GroovyTestCase {
         assert dollars
         assertEquals dollars.amount, 5f
 
-        mult = new Money(amount:15, currency:euro) * 21
+        mult = new Money(amount: 15, currency: euro) * 21
         assertEquals mult.amount, 315f
-        
     }
 
-	void testDiv() {
-        def dollars = new Money(amount:10, currency:dollar)
-        def div =  dollars / 2
+    void testDiv() {
+        def dollars = new Money(amount: 10, currency: dollar)
+        def div = dollars / 2
 
         assertEquals div.amount, 5f
         assertEquals div.currency.currencyCode, 'USD'
 
-		dollars /= 4
+        dollars /= 4
         assert dollars
         assertEquals dollars.amount, 2.5f
 
-        div = new Money(amount:7.5, currency:euro) / 3
+        div = new Money(amount: 7.5, currency: euro) / 3
         assertEquals div.amount, 2.5f
-        
     }
 
-
     void testFailures() {
-        Money euros = new Money(amount:10, currency:euro)
+        Money euros = new Money(amount: 10, currency: euro)
 
         shouldFail(Exception) {
             Money toDollars = euros.convertTo(dollar, new Date(2005, 01, 01))
