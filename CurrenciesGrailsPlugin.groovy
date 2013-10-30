@@ -1,5 +1,5 @@
 class CurrenciesGrailsPlugin {
-	String version = '1.5-SNAPSHOT'
+    String version = '2.0-SNAPSHOT'
     String dependsOn = [:]
     String grailsVersion = '2.0.0 > *'
     String author = 'Ricardo J. Méndez'
