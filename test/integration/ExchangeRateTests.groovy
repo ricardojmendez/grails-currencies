@@ -7,16 +7,16 @@ class ExchangeRateTests extends GroovyTestCase {
     Currency gbp = Currency.getInstance('GBP')
 
     void setUp() {
-        new ExchangeRate(baseCurrency: euro, toCurrency: dollar, rate: 1.46122, validFrom: new Date('2007/12/2')).save()
-        new ExchangeRate(baseCurrency: yen, toCurrency: dollar, rate: 0.008981, validFrom: new Date('2007/12/2')).save()
-        new ExchangeRate(baseCurrency: dollar, toCurrency: yen, rate: 111.336, validFrom: new Date('2007/12/2')).save()
-        new ExchangeRate(baseCurrency: gbp, toCurrency: dollar, rate: 2.02369, validFrom: new Date('2007/12/2')).save()
+        new ExchangeRate(baseCurrency: euro, toCurrency: dollar, rate: 1.46122, date: new Date('2007/12/2')).save()
+        new ExchangeRate(baseCurrency: yen, toCurrency: dollar, rate: 0.008981, date: new Date('2007/12/2')).save()
+        new ExchangeRate(baseCurrency: dollar, toCurrency: yen, rate: 111.336, date: new Date('2007/12/2')).save()
+        new ExchangeRate(baseCurrency: gbp, toCurrency: dollar, rate: 2.02369, date: new Date('2007/12/2')).save()
     }
 
     void testCurrencies() {
         def rate = ExchangeRate.findByBaseCurrencyAndToCurrency(euro, dollar)
         assert rate
         assertEquals rate.rate, 1.46122
-        assertEquals rate.validFrom, new Date('2007/12/2')
+        assertEquals rate.date, new Date('2007/12/2')
     }
 }

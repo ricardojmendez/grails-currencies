@@ -8,11 +8,11 @@ class MoneyTests extends GroovyTestCase {
     Currency gbp = Currency.getInstance('GBP')
 
     void setUp() {
-        new ExchangeRate(baseCurrency: euro, toCurrency: dollar, rate: 1.46122, validFrom: new Date('2007/12/2')).save()
-        new ExchangeRate(baseCurrency: yen, toCurrency: dollar, rate: 0.008981, validFrom: new Date('2007/12/2')).save()
-        new ExchangeRate(baseCurrency: dollar, toCurrency: yen, rate: 111.336, validFrom: new Date('2007/12/2')).save()
-        new ExchangeRate(baseCurrency: gbp, toCurrency: dollar, rate: 2.02369, validFrom: new Date('2007/12/2')).save()
-        new ExchangeRate(baseCurrency: euro, toCurrency: dollar, rate: 1.33159, validFrom: new Date('2006/12/2')).save()
+        new ExchangeRate(baseCurrency: euro, toCurrency: dollar, rate: 1.46122, date: new Date('2007/12/2')).save()
+        new ExchangeRate(baseCurrency: yen, toCurrency: dollar, rate: 0.008981, date: new Date('2007/12/2')).save()
+        new ExchangeRate(baseCurrency: dollar, toCurrency: yen, rate: 111.336, date: new Date('2007/12/2')).save()
+        new ExchangeRate(baseCurrency: gbp, toCurrency: dollar, rate: 2.02369, date: new Date('2007/12/2')).save()
+        new ExchangeRate(baseCurrency: euro, toCurrency: dollar, rate: 1.33159, date: new Date('2006/12/2')).save()
     }
 
     void testInits() {

@@ -108,8 +108,8 @@ public class Money implements Serializable {
                     eq('toCurrency', this.currency)
                 }
             }
-            le('validFrom', toDate)
-            order('validFrom', 'desc')
+            le('date', toDate)
+            order('date', 'desc')
             maxResults(1)
         }
         def multiplier = 0
