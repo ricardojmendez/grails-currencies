@@ -1,0 +1,18 @@
+# JetBrains IntelliJ IDEA files
+.idea/
+*.iml
+atlassian-ide-plugin.xml
+
+# Log files
+*.log
+
+# Libraries and others
+*.jar
+*.zip
+
+# Target
+target/
+
+docs/
+plugin.xml
+.settings
